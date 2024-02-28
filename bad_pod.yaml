@@ -1,0 +1,130 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/containerID: d079a561d634e69b0f7b6e28a750897d4ef8bcb4052d8703b34d085457be5eaf
+    cni.projectcalico.org/podIP: ""
+    cni.projectcalico.org/podIPs: ""
+  creationTimestamp: "2024-02-28T19:39:48Z"
+  generateName: gke-128-container-status-unknown-7955bdbc96-
+  labels:
+    app: gke-128-container-status-unknown
+    pod-template-hash: 7955bdbc96
+  name: gke-128-container-status-unknown-7955bdbc96-9zms8
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: gke-128-container-status-unknown-7955bdbc96
+    uid: 52dd4756-0673-473b-9344-d0b637facee8
+  resourceVersion: "2532207787"
+  uid: 55a66971-1399-4553-bd9f-ab70e619d3db
+spec:
+  containers:
+  - image: <redacted>
+    imagePullPolicy: Always
+    name: gke-128-container-status-unknown
+    resources:
+      limits:
+        ephemeral-storage: 1Gi
+      requests:
+        ephemeral-storage: 500Mi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-zhkfq
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: <redacted>
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: gke.io/optimize-utilization-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 10
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-zhkfq
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2024-02-28T19:39:48Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2024-02-28T19:40:31Z"
+    reason: PodFailed
+    status: "False"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2024-02-28T19:40:31Z"
+    reason: PodFailed
+    status: "False"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2024-02-28T19:39:48Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - image: <redacted>
+    imageID: ""
+    lastState:
+      terminated:
+        exitCode: 137
+        finishedAt: null
+        message: The container could not be located when the pod was deleted.  The
+          container used to be Running
+        reason: ContainerStatusUnknown
+        startedAt: null
+    name: gke-128-container-status-unknown
+    ready: false
+    restartCount: 1
+    started: false
+    state:
+      terminated:
+        exitCode: 137
+        finishedAt: null
+        message: The container could not be located when the pod was terminated
+        reason: ContainerStatusUnknown
+        startedAt: null
+  hostIP: 10.211.226.70
+  message: 'Pod ephemeral local storage usage exceeds the total limit of containers
+    1Gi. '
+  phase: Failed
+  podIP: 10.26.73.37
+  podIPs:
+  - ip: 10.26.73.37
+  qosClass: BestEffort
+  reason: Evicted
+  startTime: "2024-02-28T19:39:48Z"

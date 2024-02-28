@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gke-128-container-status-unknown
+  namespace: default
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: gke-128-container-status-unknown
+  template:
+    metadata:
+      labels:
+        app: gke-128-container-status-unknown
+    spec:
+      containers:
+      - image: <tbd>
+        resources:
+          limits:
+            ephemeral-storage: "1Gi"
+          requests:
+            ephemeral-storage: "500Mi"
+        imagePullPolicy: Always
+        name: gke-128-container-status-unknown
+      terminationGracePeriodSeconds: 10
